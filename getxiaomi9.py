@@ -72,6 +72,6 @@ if __name__ == '__main__':
     pwd = input('pwd：\n')
 
     a = xiaomi(usernme=username, pwd=pwd)
-    #a.login()
-    #a.check_phone()
+    a.login()
+    a.check_phone()
     a.buy()
