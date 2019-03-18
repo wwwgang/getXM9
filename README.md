@@ -1,7 +1,7 @@
 # getXM9
 selenuim实现抢购小米9
 
-getxiaomi9：小米9紫色、+19元得标准高透贴膜 
+getxiaomi9：小米9紫色8G版标配
 
 getxiaomi9pro：小米9透明尊享
 
