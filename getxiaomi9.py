@@ -7,10 +7,22 @@ class xiaomi():
     burl = 'https://item.mi.com/product/10000134.html'
     atime = 1552960800
 
+    #   该方法用来确认元素是否存在，如果存在返回flag=true，否则返回false
+    def isElementExist(self,element):
+        flag=True
+        browser=self.b
+        try:
+            browser.find_element_by_css_selector(element)
+            return flag
+
+        except:
+            flag=False
+            return flag
+
     def __init__(self, usernme, pwd):
         self.username = usernme
         self.pwd = pwd
-        self.b = webdriver.Firefox(executable_path='geckodriver.exe')
+        self.b = webdriver.Firefox(executable_path='./geckodriver')
 
     def login(self):
         print('正在登陆...\n')
@@ -18,6 +30,15 @@ class xiaomi():
         self.b.find_element_by_id('username').send_keys(self.username)
         self.b.find_element_by_id('pwd').send_keys(self.pwd)
         self.b.find_element_by_id('login-button').click()
+
+    def check_phone(self):
+        time.sleep(1.5)
+        sreach_window=self.b.current_window_handle
+        if self.isElementExist('.btn_tip.btn_commom.verify-sendbtn'):
+            self.b.find_element_by_css_selector('.btn_tip.btn_commom.verify-sendbtn').click()
+            sms_code = input('code：\n')
+            self.b.find_element_by_name("ticket").send_keys(sms_code)
+            self.b.find_element_by_css_selector('.btn_tip.btn_commom.btn-submit').click()
 
     def buy(self):
         print('进入米9秒杀页面...\n')
@@ -42,4 +63,5 @@ if __name__ == '__main__':
     pwd = input('pwd：\n')
     a = xiaomi(usernme=username, pwd=pwd)
     a.login()
+    a.check_phone()
     a.buy()
