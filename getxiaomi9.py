@@ -46,6 +46,15 @@ class xiaomi():
         print('正在选择型号配件...\n')
         self.b.find_element_by_xpath('//*[@id="J_list"]/div[2]/ul/li[3]').click()
         self.b.find_element_by_xpath('//*[@id="J_list"]/div[3]/ul/li[5]').click()
+
+        try:
+            self.b.find_element_by_xpath('//*[@id="J_buyBox"]/div/div[1]/div/a[1]').click()
+            self.b.find_element_by_xpath('//*[@id="J_agreeModal"]/div[3]/div/button[2]').click()
+            time.sleep(3)
+            self.b.find_element_by_xpath('//*[@id="J_buyBtnBox"]/li[1]').click()
+        except:
+            pass
+
         while True:
             if time.time() > self.atime:
                 try:
@@ -61,6 +70,7 @@ class xiaomi():
 if __name__ == '__main__':
     username = input('username：\n')
     pwd = input('pwd：\n')
+
     a = xiaomi(usernme=username, pwd=pwd)
     #a.login()
     #a.check_phone()
