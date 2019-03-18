@@ -1,5 +1,6 @@
-from selenium import webdriver
 import time
+
+from selenium import webdriver
 
 
 class xiaomi():
@@ -8,15 +9,15 @@ class xiaomi():
     atime = 1552960800
 
     #   该方法用来确认元素是否存在，如果存在返回flag=true，否则返回false
-    def isElementExist(self,element):
-        flag=True
-        browser=self.b
+    def isElementExist(self, element):
+        flag = True
+        browser = self.b
         try:
             browser.find_element_by_css_selector(element)
             return flag
 
         except:
-            flag=False
+            flag = False
             return flag
 
     def __init__(self, usernme, pwd):
@@ -33,20 +34,21 @@ class xiaomi():
 
     def check_phone(self):
         time.sleep(1.5)
-        sreach_window=self.b.current_window_handle
+        sreach_window = self.b.current_window_handle
         if self.isElementExist('.btn_tip.btn_commom.verify-sendbtn'):
             self.b.find_element_by_css_selector('.btn_tip.btn_commom.verify-sendbtn').click()
             sms_code = input('code：\n')
             self.b.find_element_by_name("ticket").send_keys(sms_code)
             self.b.find_element_by_css_selector('.btn_tip.btn_commom.btn-submit').click()
 
-    def buy(self):
-        print('进入米9秒杀页面...\n')
-        self.b.get(self.burl)
-        print('正在选择型号配件...\n')
+    def choose_type(self):
         self.b.find_element_by_xpath('//*[@id="J_list"]/div[1]/ul/li[2]').click()
         self.b.find_element_by_xpath('//*[@id="J_list"]/div[2]/ul/li[2]').click()
         self.b.find_element_by_xpath('//*[@id="J_list"]/div[3]/ul/li[1]').click()
+
+    def buy(self):
+        print('进入米9秒杀页面...\n')
+        self.b.get(self.burl)
 
         try:
             self.b.find_element_by_xpath('//*[@id="J_buyBox"]/div/div[1]/div/a[1]').click()
@@ -55,6 +57,9 @@ class xiaomi():
             self.b.find_element_by_xpath('//*[@id="J_buyBtnBox"]/li[1]').click()
         except:
             pass
+
+        print('正在选择型号配件...\n')
+        self.choose_type()
 
         while True:
             if time.time() > self.atime:
