@@ -14,6 +14,7 @@ class xiaomi():
 
     def login(self):
         print('正在登陆...\n')
+
         self.b.get(self.lurl)
         self.b.find_element_by_id('username').send_keys(self.username)
         self.b.find_element_by_id('pwd').send_keys(self.pwd)
