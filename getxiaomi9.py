@@ -44,8 +44,9 @@ class xiaomi():
         print('进入米9秒杀页面...\n')
         self.b.get(self.burl)
         print('正在选择型号配件...\n')
-        self.b.find_element_by_xpath('//*[@id="J_list"]/div[2]/ul/li[3]').click()
-        self.b.find_element_by_xpath('//*[@id="J_list"]/div[3]/ul/li[5]').click()
+        self.b.find_element_by_xpath('//*[@id="J_list"]/div[1]/ul/li[2]').click()
+        self.b.find_element_by_xpath('//*[@id="J_list"]/div[2]/ul/li[2]').click()
+        self.b.find_element_by_xpath('//*[@id="J_list"]/div[3]/ul/li[1]').click()
 
         try:
             self.b.find_element_by_xpath('//*[@id="J_buyBox"]/div/div[1]/div/a[1]').click()
