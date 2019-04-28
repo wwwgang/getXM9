@@ -1,7 +1,10 @@
 # getXM9
 selenuim实现抢购小米9
+* 使用前请先ntp同步你的当前时间
+* 只实现点击加入购物车
+* 抢购成功以付款时间为准
 
-getxiaomi9：小米9紫色、+19元得标准高透贴膜 
+getxiaomi9：小米9紫色8G版标配
 
 getxiaomi9pro：小米9透明尊享
 
